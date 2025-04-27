@@ -15,7 +15,7 @@ const Footer = () => {
               </span>
             </div>
             <p className="text-gray-600 leading-relaxed">
-              Empowering the next generation of professionals through experiential learning.
+              Empowering the next generation of professionals through research based learning.
             </p>
           </div>
           <div>

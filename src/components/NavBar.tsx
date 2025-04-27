@@ -43,9 +43,9 @@ const Header: React.FC<HeaderProps> = ({ className }) => {
         </div>
         <nav className="hidden md:block">
           <ul className="flex items-center space-x-6">
-            <li><Link href="#" className="text-[#4B5563] hover:text-[#3B82F6] flex items-center"><School className="mr-2" />For Schools</Link></li>
-            <li><Link href="#" className="text-[#4B5563] hover:text-[#3B82F6] flex items-center"><BookOpen className="mr-2" />Offerings</Link></li>
-            <li><Link href="#" className="text-[#4B5563] hover:text-[#3B82F6] flex items-center"><Users className="mr-2" />About Us</Link></li>
+            <li><Link href="/about-us" className="text-[#4B5563] hover:text-[#3B82F6] flex items-center"><School className="mr-2" /> About Us </Link></li>
+            <li><Link href="/offerings" className="text-[#4B5563] hover:text-[#3B82F6] flex items-center"><BookOpen className="mr-2" /> Offerings </Link></li>
+            <li><Link href="/contact-us" className="text-[#4B5563] hover:text-[#3B82F6] flex items-center"><Users className="mr-2" /> Team </Link></li>
             <li><Link href="/sign-in"><Button variant="outline" className="text-[#3B82F6] border-[#3B82F6] hover:bg-[#3B82F6]/40">Log In</Button></Link></li>
             <li><Link href="/sign-up"><Button className="bg-[#3B82F6] text-white hover:bg-[#2563EB]/70">Sign Up</Button></Link></li>
           </ul>
@@ -59,13 +59,13 @@ const Header: React.FC<HeaderProps> = ({ className }) => {
           </DropdownMenuTrigger>
           <DropdownMenuContent align="end">
             <DropdownMenuItem asChild>
-              <Link href="#" className="flex items-center data-[highlighted]:bg-gray-100"><School className="mr-2" />For Schools</Link>
+              <Link href="/about-us" className="flex items-center data-[highlighted]:bg-gray-100"><School className="mr-2" />About Us</Link>
             </DropdownMenuItem>
             <DropdownMenuItem asChild>
-              <Link href="#" className="flex items-center data-[highlighted]:bg-gray-100"><BookOpen className="mr-2" />Courses</Link>
+              <Link href="/offerings" className="flex items-center data-[highlighted]:bg-gray-100"><BookOpen className="mr-2" />Offerings</Link>
             </DropdownMenuItem>
             <DropdownMenuItem asChild> 
-              <Link href="#" className="flex items-center data-[highlighted]:bg-gray-100"><Users className="mr-2" />About Us</Link>
+              <Link href="/contact-us" className="flex items-center data-[highlighted]:bg-gray-100"><Users className="mr-2" />Team</Link>
             </DropdownMenuItem>
             <DropdownMenuItem asChild>
               <Link href="/sign-in" className="w-full data-[highlighted]:bg-gray-100">Log In</Link>
