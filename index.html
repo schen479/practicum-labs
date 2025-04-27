@@ -1,0 +1,486 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Practicum Labs - Empowering Learning Through Research</title>
+  <meta name="description" content="Practicum Labs official website - Empowering Students in Research & Mentorship Opportunities.">
+  <!-- Tailwind CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+  <!-- Font Awesome -->
+  <link href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.5.2/css/all.min.css" rel="stylesheet">
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@700;400&display=swap" rel="stylesheet">
+  <!-- Chart.js -->
+  <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.3/dist/chart.umd.min.js"></script>
+  <style>
+    body {
+      font-family: 'Inter', Arial, sans-serif;
+      background: white;
+      color: #10223d;
+      font-weight: 400;
+    }
+    .font-bold { font-weight: 700; }
+    .t-dark-blue { color: #10223d; }
+    .bg-dark-blue { background: #10223d; }
+    .primary-btn {
+      background: #10223d;
+      color: white;
+      font-weight: 700;
+      border-radius: 0.375rem;
+      padding: 0.75rem 1.5rem;
+      transition: background 0.2s;
+    }
+    .primary-btn:hover { background: #354e6d; }
+    .feature-icon {
+      color: #2861d6;
+      font-size: 2.5rem;
+      margin-bottom: 1rem;
+    }
+    .input, .textarea {
+      border: 1px solid #dce3e9;
+      border-radius: 0.375rem;
+      width: 100%;
+      padding: 0.5rem 1rem;
+      margin: 0.5rem 0 1rem 0;
+      background: #f9fafb;
+      font-size: 1rem;
+    }
+    .card {
+      background: white;
+      border-radius: 1rem;
+      box-shadow: 0 4px 12px rgba(16,34,61,0.08);
+      padding: 2rem 1.5rem;
+      margin: 1rem 0;
+    }
+    .nav-shadow {
+      box-shadow: 0 2px 8px rgba(16,34,61,0.07);
+    }
+    /* For features and statistics grid responsiveness */
+    @media (min-width: 768px) {
+      .stats-grid { display: grid; grid-template-columns: repeat(3,1fr);}
+      .features-grid { display: grid; grid-template-columns: repeat(3,1fr);}
+    }
+    .chart-container {
+      width: 100%; max-width: 530px; margin-left: auto; margin-right: auto;
+    }
+    /* Remove scrollbars for PDF-friendliness */
+    ::-webkit-scrollbar { width: 0px; background: transparent; }
+    /* Remove outline on focus for PDF clarity */
+    input:focus, textarea:focus, button:focus { outline: none; }
+  </style>
+</head>
+<body class="bg-white">
+
+  <!-- NAVBAR -->
+  <nav class="fixed w-full top-0 left-0 bg-white nav-shadow z-50">
+    <div class="max-w-7xl mx-auto flex items-center justify-between py-3 px-6 ">
+      <div class="flex items-center space-x-2">
+        <span class="text-2xl font-bold t-dark-blue tracking-tight">Practicum Labs</span>
+      </div>
+      <div class="hidden md:flex space-x-8 text-lg">
+        <a href="#about" class="font-bold t-dark-blue hover:text-blue-700">About</a>
+        <a href="#program" class="font-bold t-dark-blue hover:text-blue-700">Program</a>
+        <a href="#features" class="font-bold t-dark-blue hover:text-blue-700">Features</a>
+        <a href="#statistics" class="font-bold t-dark-blue hover:text-blue-700">Statistics</a>
+        <a href="#contact" class="font-bold t-dark-blue hover:text-blue-700">Contact</a>
+      </div>
+      <div>
+        <button onclick="openLoginModal()" class="primary-btn mx-2">Login / Sign Up</button>
+      </div>
+    </div>
+  </nav>
+  <div class="py-5 md:py-8"></div>
+
+  <!-- HERO SECTION -->
+  <section class="bg-dark-blue w-full px-4 py-16 md:py-24 text-white text-center">
+    <h1 class="font-bold text-4xl md:text-5xl mb-6">Empowering Learning <span class="text-blue-400">Through Research</span></h1>
+    <p class="text-xl md:text-2xl max-w-2xl mx-auto mb-8">Unlock research opportunities, experience mentorship, and transform your academic journey.<br>
+      Our platform bridges the gap between ambition and opportunity with real-world skills.</p>
+    <a href="#program" class="primary-btn inline-block text-lg mb-2">Explore Our Program</a>
+    <div class="mt-10 chart-container">
+      <canvas id="statChart" height="200"></canvas>
+    </div>
+  </section>
+
+  <!-- FEATURE HIGHLIGHTS -->
+  <section id="features" class="max-w-7xl mx-auto py-14 px-4">
+    <h2 class="text-3xl font-bold t-dark-blue text-center mb-10">Why Choose Practicum Labs?</h2>
+    <div class="features-grid gap-8">
+      <!-- Feature Card 1 -->
+      <div class="card text-center">
+        <i class="fas fa-user-graduate feature-icon"></i>
+        <h3 class="font-bold text-xl mb-2 t-dark-blue">Hands-on Research</h3>
+        <p>Access guided, real-world research projects designed for students and aspiring scholars. Develop critical thinking and technical skills that set you apart.</p>
+      </div>
+      <!-- Feature Card 2 -->
+      <div class="card text-center">
+        <i class="fas fa-handshake feature-icon"></i>
+        <h3 class="font-bold text-xl mb-2 t-dark-blue">Mentorship & Networking</h3>
+        <p>Get paired with experienced mentors who guide you every step. Build connections with professionals and fellow students in STEM fields.</p>
+      </div>
+      <!-- Feature Card 3 -->
+      <div class="card text-center">
+        <i class="fas fa-award feature-icon"></i>
+        <h3 class="font-bold text-xl mb-2 t-dark-blue">Pathways to Success</h3>
+        <p>Our alumni have gone on to win research awards, publish papers, and attend top universities. Start building your future today.</p>
+      </div>
+      <!-- Feature Card 4 -->
+      <div class="card text-center">
+        <i class="fas fa-bullseye feature-icon"></i>
+        <h3 class="font-bold text-xl mb-2 t-dark-blue">Impact Focused</h3>
+        <p>Projects emphasize real-world change—helping diverse students address pressing local and global challenges through research.</p>
+      </div>
+      <!-- Feature Card 5 -->
+      <div class="card text-center">
+        <i class="fas fa-globe feature-icon"></i>
+        <h3 class="font-bold text-xl mb-2 t-dark-blue">Inclusive & Accessible</h3>
+        <p>Opportunities for students of all backgrounds—disabilities, underrepresented groups, all grades, global locations are welcome!</p>
+      </div>
+      <!-- Feature Card 6 -->
+      <div class="card text-center">
+        <i class="fas fa-credit-card feature-icon"></i>
+        <h3 class="font-bold text-xl mb-2 t-dark-blue">Easy Enrollment</h3>
+        <p>Enroll in a few clicks, manage your journey, and securely handle program payments—all in one dashboard.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ABOUT SECTION -->
+  <section id="about" class="max-w-5xl mx-auto py-14 px-4">
+    <h2 class="text-3xl font-bold mb-6 t-dark-blue text-center">About Practicum Labs</h2>
+    <p class="text-lg text-center max-w-3xl mx-auto mb-10">
+      Practicum Labs was founded to address a vital need: students want to get into research but often lack the support or connections to succeed.<br>
+      Our goal is to empower every ambitious learner with the guidance, skills, and mentorship needed to unlock their potential and turn ideas into impact.<br>
+      <span class="font-bold">Who we reach: </span> Students from all backgrounds, including those with disabilities, women in STEM, neurodivergent students, K-12 and college levels, from all locations/genders.
+    </p>
+    <div class="stats-grid gap-6 my-8">
+      <!-- Stat Card 1 -->
+      <div class="card text-center">
+        <div class="text-4xl font-bold text-blue-600 mb-2">72%</div>
+        <div>of students want to get into research but don’t know where to start.</div>
+      </div>
+      <!-- Stat Card 2 -->
+      <div class="card text-center">
+        <div class="text-4xl font-bold text-blue-600 mb-2">18%</div>
+        <div>of underrepresented students have mentorship access.</div>
+      </div>
+      <!-- Stat Card 3 -->
+      <div class="card text-center">
+        <div class="text-4xl font-bold text-blue-600 mb-2">65%</div>
+        <div>believe research experience is crucial for career success.</div>
+      </div>
+      <!-- Stat Card 4 -->
+      <div class="card text-center">
+        <div class="text-4xl font-bold text-blue-600 mb-2">80%</div>
+        <div>feel disconnected from real-world applications in school.</div>
+      </div>
+      <!-- Stat Card 5 -->
+      <div class="card text-center">
+        <div class="text-4xl font-bold text-blue-600 mb-2">57%</div>
+        <div>say mentorship dramatically increases their confidence.</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PROGRAM SECTION -->
+  <section id="program" class="max-w-6xl mx-auto py-14 px-4">
+    <h2 class="text-3xl font-bold mb-6 t-dark-blue text-center">Our Flagship 10-Week Program</h2>
+    <div class="card md:flex justify-between items-center md:space-x-8">
+      <div class="flex-1 mb-8 md:mb-0">
+        <h3 class="text-2xl font-bold mb-4 t-dark-blue">How it Works</h3>
+        <ul class="list-disc pl-6 space-y-2 text-lg">
+          <li>10-week, mentor-guided research experience—fully online and accessible from anywhere.</li>
+          <li>Weekly live sessions: group meets and one-on-one mentor support included in the fee.</li>
+          <li>Project selection support and access to a content library and digital toolkit.</li>
+          <li>Personalized feedback and career guidance.</li>
+          <li>Final showcase: Present your research to peers, mentors, and industry guests!</li>
+        </ul>
+        <div class="mt-4 font-bold text-lg t-dark-blue">Pricing: <span class="text-blue-600">$499</span> (full 10 weeks, all materials & events included)</div>
+      </div>
+      <div class="flex-1">
+        <div class="card bg-blue-50 border border-blue-200 p-8">
+          <h4 class="font-bold text-xl mb-2 t-dark-blue">Enroll Now</h4>
+          <form id="enrollForm" onsubmit="return handleEnrollSubmit(event)">
+            <input class="input" type="text" id="ename" name="ename" placeholder="Your Name" required>
+            <input class="input" type="email" id="eemail" name="eemail" placeholder="Your Email" required>
+            <input class="input" type="text" id="eschool" name="eschool" placeholder="School/College" required>
+            <button class="primary-btn w-full mt-2" type="submit">Start Application</button>
+            <div id="enrollResult" class="mt-2 text-green-500 font-bold hidden">Application submitted! We'll contact you soon.</div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- STATISTICS DATA VISUALIZATION -->
+  <section id="statistics" class="max-w-5xl mx-auto py-14 px-4">
+    <h2 class="text-3xl font-bold mb-8 t-dark-blue text-center">Research Impact at a Glance</h2>
+    <div class="card">
+      <canvas id="impactChart" height="180"></canvas>
+    </div>
+    <div class="mt-8 text-center font-bold text-blue-700 text-lg">
+      Join 1000+ students <i class="fas fa-arrow-right mx-2"></i> Unlock your impact with Practicum Labs today!
+    </div>
+  </section>
+
+  <!-- CONTACT SECTION -->
+  <section id="contact" class="max-w-3xl mx-auto py-14 px-4">
+    <h2 class="text-3xl font-bold mb-6 t-dark-blue text-center">Contact & Inquiries</h2>
+    <form id="contactForm" onsubmit="return handleContactSubmit(event)" class="card">
+      <input class="input" type="text" id="cname" name="cname" placeholder="Your Name" required>
+      <input class="input" type="email" id="cemail" name="cemail" placeholder="Your Email" required>
+      <textarea class="textarea" id="cmessage" name="cmessage" rows="4" placeholder="Your Message" required></textarea>
+      <button class="primary-btn w-full" type="submit">Send Message</button>
+      <div id="contactResult" class="mt-2 text-green-500 font-bold hidden">Thank you for reaching out. We'll reply soon!</div>
+    </form>
+    <div class="mt-8 text-center">
+      <span class="font-bold">Email: </span>
+      <a href="mailto:practicumlabs50@gmail.com" class="text-blue-600 hover:underline">practicumlabs50@gmail.com</a>
+      <div class="mt-2 flex justify-center space-x-6 text-xl">
+        <a href="https://www.instagram.com/" target="_blank" title="Instagram"><i class="fab fa-instagram"></i></a>
+        <a href="https://www.linkedin.com/" target="_blank" title="LinkedIn"><i class="fab fa-linkedin"></i></a>
+      </div>
+    </div>
+  </section>
+
+  <!-- LOGIN MODAL -->
+  <div id="loginModal" class="hidden fixed inset-0 bg-black bg-opacity-60 flex items-center justify-center z-50">
+    <div class="bg-white rounded-lg shadow-lg max-w-sm w-full p-8 mx-2 relative">
+      <button onclick="closeLoginModal()" class="absolute top-2 right-2 text-gray-400 text-2xl hover:text-red-400">&times;</button>
+      <h2 class="font-bold text-2xl t-dark-blue mb-6 text-center" id="loginTitle">Login</h2>
+      <form id="loginForm" onsubmit="return handleLogin(event)">
+        <input class="input" type="email" id="loginEmail" placeholder="Email" required>
+        <input class="input" type="password" id="loginPassword" placeholder="Password" required>
+        <button class="primary-btn w-full mt-2" type="submit">Login</button>
+        <div id="loginError" class="text-red-500 font-bold mt-2 hidden"></div>
+      </form>
+      <div class="mt-4 text-center text-gray-500">
+        Don't have an account? <button onclick="showSignup()" class="text-blue-600 font-bold hover:underline">Sign Up</button>
+      </div>
+      <form id="signupForm" class="hidden mt-4" onsubmit="return handleSignup(event)">
+        <input class="input" type="text" id="signupName" placeholder="Full Name" required>
+        <input class="input" type="email" id="signupEmail" placeholder="Email" required>
+        <input class="input" type="password" id="signupPassword" placeholder="Password" required>
+        <button class="primary-btn w-full mt-2" type="submit">Sign Up</button>
+        <div id="signupError" class="text-red-500 font-bold mt-2 hidden"></div>
+      </form>
+      <div id="signupSwitchBack" class="hidden mt-2 text-center text-gray-500">
+        Already have an account? <button onclick="showLogin()" class="text-blue-600 font-bold hover:underline">Login</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- DUMMY DASHBOARD FOR LOGGED-IN USERS -->
+  <div id="dashboard" class="hidden fixed inset-0 bg-black bg-opacity-70 flex items-center justify-center z-50">
+    <div class="bg-white rounded-lg shadow-lg max-w-lg w-full p-10 mx-2 relative">
+      <button onclick="closeDashboard()" class="absolute top-2 right-2 text-gray-400 text-2xl hover:text-red-400">&times;</button>
+      <h2 class="font-bold text-2xl t-dark-blue mb-6">Welcome, <span id="userNameDash">User</span>!</h2>
+      <div class="mb-6">
+        <p class="text-lg font-bold t-dark-blue">Your Profile & Payments</p>
+        <ul class="mt-2 text-blue-700">
+          <li>Email: <span id="userEmailDash">your@email.com</span></li>
+          <li>Status: <span class="font-bold text-green-500">Active</span></li>
+          <li>Program: 10-Week Research Course</li>
+          <li>Payment: <span id="userPaidStatus" class="font-bold text-red-500">Pending</span></li>
+        </ul>
+      </div>
+      <button class="primary-btn mb-3 w-full" onclick="simulatePayment()">Pay Program Fee ($499)</button>
+      <div id="paymentMsg" class="font-bold text-green-600 mb-2 hidden">Payment successful! Welcome to Practicum Labs.</div>
+      <button onclick="doLogout()" class="text-gray-600 underline font-bold text-lg mt-2 w-full">Logout</button>
+    </div>
+  </div>
+
+  <!-- FOOTER -->
+  <footer class="text-center py-8 px-4 bg-blue-50 mt-16">
+    <span class="font-bold t-dark-blue">&copy; Practicum Labs 2024</span>
+    <span class="mx-2 text-gray-400">|</span>
+    <span class="t-dark-blue">Empowering the next generation of innovators</span>
+  </footer>
+
+  <!-- SCRIPTS FOR CHARTS, FORMS, LOGIN -->
+  <script>
+    // Statistic Chart in Hero
+    document.addEventListener('DOMContentLoaded', function () {
+      var ctx = document.getElementById('statChart').getContext('2d');
+      new Chart(ctx, {
+        type: 'bar',
+        data: {
+          labels: ['Want Research', 'Mentor Access', 'Career Value', 'Disconnected', 'Conf. Boost'],
+          datasets: [{
+            label: 'Key Student Metrics (%)',
+            data: [72, 18, 65, 80, 57],
+            backgroundColor: [
+              '#2563eb','#60a5fa','#38bdf8','#818cf8','#a5b4fc'
+            ]
+          }]
+        },
+        options: {
+          plugins: { legend: { display: false }},
+          scales: {
+            y: { beginAtZero: true, max: 100, grid: {display: false}},
+            x: { grid: {display: false}}
+          }
+        }
+      });
+
+      // Impact Chart
+      var c2 = document.getElementById('impactChart').getContext('2d');
+      new Chart(c2, {
+        type: 'doughnut',
+        data: {
+          labels: ['Women & Minorities', 'Disabilities', 'Underrepresented', 'Other'],
+          datasets: [{
+            data: [60, 5, 45, 20],
+            backgroundColor: ['#2563eb', '#d97706', '#a21caf', '#22d3ee'],
+            borderWidth: 0
+          }]
+        },
+        options: {
+          plugins: {
+            legend: { position: 'right', labels: { font: { weight: 'bold', size: 16 }} }
+          },
+          cutout: '55%'
+        }
+      });
+    });
+
+    // Application Form simulation
+    function handleEnrollSubmit(e) {
+      e.preventDefault();
+      document.getElementById('enrollResult').classList.remove('hidden');
+      setTimeout(()=>{ document.getElementById('enrollForm').reset(); },1200);
+      return false;
+    }
+    // Contact Form simulation
+    function handleContactSubmit(e) {
+      e.preventDefault();
+      document.getElementById('contactResult').classList.remove('hidden');
+      setTimeout(()=>{ document.getElementById('contactForm').reset(); },1200);
+      return false;
+    }
+
+    // LOGIN/SIGNUP LOGIC (Dummy localStorage-based)
+    function openLoginModal() {
+      document.getElementById('loginModal').classList.remove('hidden');
+      showLogin();
+    }
+    function closeLoginModal() {
+      document.getElementById('loginModal').classList.add('hidden');
+      document.getElementById('loginForm').reset();
+      document.getElementById('signupForm').reset();
+    }
+    function showSignup() {
+      document.getElementById('loginForm').classList.add('hidden');
+      document.getElementById('signupForm').classList.remove('hidden');
+      document.getElementById('signupSwitchBack').classList.remove('hidden');
+      document.getElementById('loginTitle').textContent = "Sign Up";
+    }
+    function showLogin() {
+      document.getElementById('loginForm').classList.remove('hidden');
+      document.getElementById('signupForm').classList.add('hidden');
+      document.getElementById('signupSwitchBack').classList.add('hidden');
+      document.getElementById('loginTitle').textContent = "Login";
+    }
+    // Simulate simple user base in localStorage
+    function getUsers() {
+      let u = localStorage.getItem('practicum_users');
+      return u ? JSON.parse(u) : [];
+    }
+    function saveUser(user) {
+      let users = getUsers();
+      users.push(user);
+      localStorage.setItem('practicum_users', JSON.stringify(users));
+    }
+    function findUser(email) {
+      return getUsers().find(u=>u.email === email);
+    }
+    // Signup Flow
+    function handleSignup(e) {
+      e.preventDefault();
+      let name = document.getElementById('signupName').value.trim();
+      let email = document.getElementById('signupEmail').value.trim();
+      let pass = document.getElementById('signupPassword').value;
+      if(!/^\S+@\S+\.\S+$/.test(email)) {
+        document.getElementById('signupError').textContent = "Invalid email format.";
+        document.getElementById('signupError').classList.remove('hidden');
+        return false;
+      }
+      if(pass.length < 6) {
+        document.getElementById('signupError').textContent = "Password must be at least 6 characters.";
+        document.getElementById('signupError').classList.remove('hidden');
+        return false;
+      }
+      if(findUser(email)) {
+        document.getElementById('signupError').textContent = "Email already registered.";
+        document.getElementById('signupError').classList.remove('hidden');
+        return false;
+      }
+      saveUser({name, email, pass, paid: false});
+      document.getElementById('signupError').classList.add('hidden');
+      alert("Sign-up successful! Please log in.");
+      showLogin();
+      return false;
+    }
+    // Login Flow
+    function handleLogin(e) {
+      e.preventDefault();
+      let email = document.getElementById('loginEmail').value.trim();
+      let pass = document.getElementById('loginPassword').value;
+      let user = findUser(email);
+      if(!user || user.pass !== pass) {
+        document.getElementById('loginError').textContent = "Incorrect email or password.";
+        document.getElementById('loginError').classList.remove('hidden');
+        return false;
+      }
+      localStorage.setItem('practicum_loggedin', JSON.stringify(user));
+      closeLoginModal();
+      showDashboard();
+      return false;
+    }
+    // Dashboard
+    function showDashboard() {
+      let user = JSON.parse(localStorage.getItem('practicum_loggedin'));
+      if(!user) return;
+      document.getElementById('userNameDash').textContent = user.name;
+      document.getElementById('userEmailDash').textContent = user.email;
+      document.getElementById('userPaidStatus').textContent = user.paid ? "Paid" : "Pending";
+      document.getElementById('userPaidStatus').className = "font-bold " + (user.paid ? "text-green-500" : "text-red-500");
+      document.getElementById('dashboard').classList.remove('hidden');
+      document.getElementById('paymentMsg').classList.add('hidden');
+    }
+    function closeDashboard() {
+      document.getElementById('dashboard').classList.add('hidden');
+    }
+    function doLogout() {
+      localStorage.removeItem('practicum_loggedin');
+      closeDashboard();
+    }
+    function simulatePayment() {
+      let user = JSON.parse(localStorage.getItem('practicum_loggedin'));
+      if(!user) return;
+      user.paid = true;
+      // Update user list
+      let users = getUsers();
+      let uidx = users.findIndex(u=>u.email === user.email);
+      users[uidx] = user;
+      localStorage.setItem('practicum_users', JSON.stringify(users));
+      localStorage.setItem('practicum_loggedin', JSON.stringify(user));
+      document.getElementById('userPaidStatus').textContent = "Paid";
+      document.getElementById('userPaidStatus').className = "font-bold text-green-500";
+      document.getElementById('paymentMsg').classList.remove('hidden');
+    }
+    // Show dashboard if already logged in
+    window.onload = function() {
+      if(localStorage.getItem('practicum_loggedin')) showDashboard();
+    }
+    // ESC closes modals
+    window.addEventListener('keydown', function(e){
+      if(e.key==='Escape'){
+        closeLoginModal(); closeDashboard();
+      }
+    });
+  </script>
+</body>
+</html>
+
