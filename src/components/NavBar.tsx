@@ -4,7 +4,7 @@ import React, { useState, useEffect } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
 import { Button } from '@/components/ui/Button';
-import { School, BookOpen, Users, Menu } from 'lucide-react';
+import { School, BookOpen, Users, Menu, FolderKanban } from 'lucide-react';
 import {
   DropdownMenu,
   DropdownMenuContent,
@@ -44,10 +44,9 @@ const Header: React.FC<HeaderProps> = ({ className }) => {
         <nav className="hidden md:block">
           <ul className="flex items-center space-x-6">
             <li><Link href="/about-us" className="text-[#4B5563] hover:text-[#3B82F6] flex items-center"><School className="mr-2" /> About Us </Link></li>
-            <li><Link href="/offerings" className="text-[#4B5563] hover:text-[#3B82F6] flex items-center"><BookOpen className="mr-2" /> Offerings </Link></li>
-            <li><Link href="/contact-us" className="text-[#4B5563] hover:text-[#3B82F6] flex items-center"><Users className="mr-2" /> Team </Link></li>
-            <li><Link href="/sign-in"><Button variant="outline" className="text-[#3B82F6] border-[#3B82F6] hover:bg-[#3B82F6]/40">Log In</Button></Link></li>
-            <li><Link href="/sign-up"><Button className="bg-[#3B82F6] text-white hover:bg-[#2563EB]/70">Sign Up</Button></Link></li>
+            <li><Link href="/offerings" className="text-[#4B5563] hover:text-[#3B82F6] flex items-center"><FolderKanban className="mr-2" /> Offerings </Link></li>
+            <li><Link href="/blog" className="text-[#4B5563] hover:text-[#3B82F6] flex items-center"><BookOpen className="mr-2" /> Blog </Link></li>
+            <li><Link href="/team" className="text-[#4B5563] hover:text-[#3B82F6] flex items-center"><Users className="mr-2" /> Team </Link></li>
           </ul>
         </nav>
         <DropdownMenu open={dropDown} onOpenChange={setDropdown}>
@@ -65,13 +64,12 @@ const Header: React.FC<HeaderProps> = ({ className }) => {
               <Link href="/offerings" className="flex items-center data-[highlighted]:bg-gray-100"><BookOpen className="mr-2" />Offerings</Link>
             </DropdownMenuItem>
             <DropdownMenuItem asChild> 
-              <Link href="/contact-us" className="flex items-center data-[highlighted]:bg-gray-100"><Users className="mr-2" />Team</Link>
+              <Link href="/blog" className="flex items-center data-[highlighted]:bg-gray-100"><Users className="mr-2" />Blog</Link>
+            </DropdownMenuItem>
+            <DropdownMenuItem asChild> 
+              <Link href="/team" className="flex items-center data-[highlighted]:bg-gray-100"><Users className="mr-2" />Team</Link>
             </DropdownMenuItem>
             <DropdownMenuItem asChild>
-              <Link href="/sign-in" className="w-full data-[highlighted]:bg-gray-100">Log In</Link>
-            </DropdownMenuItem>
-            <DropdownMenuItem asChild>
-              <Link href="/sign-up" className="w-full data-[highlighted]:bg-gray-100">Sign Up</Link>
             </DropdownMenuItem>
           </DropdownMenuContent>
         </DropdownMenu>

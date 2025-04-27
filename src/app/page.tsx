@@ -35,11 +35,6 @@ export default function Home() {
             className="max-w-full h-auto"
           />
         </div>
-        <div className="absolute -bottom-8 right-0 md:-right-8 bg-white p-6 rounded-lg shadow-lg">
-          <div className="flex items-center gap-4">
-            
-          </div>
-        </div>
       </div>
     </div>
   </div>
